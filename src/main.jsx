@@ -4,11 +4,13 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import Landing from './pages/landing.jsx'
 import Common from './pages/common.jsx'
+import Business from './pages/business.jsx'
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <Common />
+      <Business />
     </BrowserRouter>
   </StrictMode>,
 )
