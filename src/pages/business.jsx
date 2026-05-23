@@ -783,6 +783,86 @@ export default function Business() {
                             </div>
                         )}
 
+                        {/* WORKSPACE 4: TOKENS */}
+                        {activeTab === 'tokens' && (
+                            <div className="space-y-10 animate-[fadeIn_0.4s_ease-out]">
+
+                                {/* Token Balance Hero */}
+                                <div className="p-10 md:p-14 rounded-3xl bg-gradient-to-br from-orange-500/10 via-slate-900/60 to-slate-950 border border-orange-500/20 shadow-2xl relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(249,115,22,0.08),transparent_60%)]"></div>
+                                    <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+                                        <div className="space-y-3">
+                                            <span className="text-[10px] font-black text-orange-400 uppercase tracking-widest bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded-full">
+                                                Aethon Token Wallet
+                                            </span>
+                                            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+                                                1,250 <span className="text-orange-500">ATK</span>
+                                            </h2>
+                                            <p className="text-slate-400 font-semibold text-sm">≈ $62.50 USD · Last topped up 3 days ago</p>
+                                        </div>
+                                        <div className="flex flex-col sm:flex-row gap-3">
+                                            <button className="px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-extrabold rounded-2xl transition-all duration-300 active:scale-95 shadow-lg shadow-orange-500/20 text-sm tracking-wider uppercase cursor-pointer">
+                                                Top Up Tokens
+                                            </button>
+                                            <button className="px-8 py-4 bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-200 font-bold rounded-2xl transition-all duration-300 active:scale-95 text-sm cursor-pointer">
+                                                Withdraw
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Stats Row */}
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+                                    {[
+                                        { label: 'Total Spent', value: '3,800 ATK', sub: 'All campaigns' },
+                                        { label: 'Locked in Escrow', value: '450 ATK', sub: '2 active jobs' },
+                                        { label: 'Refunded', value: '200 ATK', sub: 'Past 30 days' },
+                                        { label: 'Earned Rewards', value: '75 ATK', sub: 'Referral bonus' },
+                                    ].map(({ label, value, sub }) => (
+                                        <div key={label} className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/60 space-y-2">
+                                            <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">{label}</p>
+                                            <p className="text-xl font-black text-white">{value}</p>
+                                            <p className="text-[10px] text-slate-500 font-semibold">{sub}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Transaction History */}
+                                <div className="space-y-5">
+                                    <div className="flex items-center justify-between pb-4 border-b border-slate-800/60">
+                                        <h3 className="font-black text-lg text-white tracking-wide">Transaction History</h3>
+                                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Last 5 transactions</span>
+                                    </div>
+                                    <div className="space-y-3">
+                                        {[
+                                            { type: 'Escrow Lock', desc: 'Video / Reels Editing campaign', amount: '-150 ATK', date: 'May 22, 2026', isCredit: false },
+                                            { type: 'Top Up', desc: 'UPI payment · Razorpay', amount: '+500 ATK', date: 'May 20, 2026', isCredit: true },
+                                            { type: 'Escrow Released', desc: 'Social Media Branding · Riya Sharma', amount: '-300 ATK', date: 'May 18, 2026', isCredit: false },
+                                            { type: 'Reward Bonus', desc: 'Referral — Arjun Mehta joined', amount: '+25 ATK', date: 'May 15, 2026', isCredit: true },
+                                            { type: 'Top Up', desc: 'UPI payment · Razorpay', amount: '+1,000 ATK', date: 'May 10, 2026', isCredit: true },
+                                        ].map((tx, i) => (
+                                            <div key={i} className="flex items-center justify-between p-5 rounded-2xl bg-slate-900/40 border border-slate-800/50 hover:border-slate-700/60 transition-all duration-200">
+                                                <div className="flex items-center gap-4">
+                                                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-sm font-black ${tx.isCredit ? 'bg-green-500/10 text-green-400' : 'bg-orange-500/10 text-orange-400'}`}>
+                                                        {tx.isCredit ? '+' : '−'}
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-extrabold text-sm text-white leading-tight">{tx.type}</p>
+                                                        <p className="text-[10px] text-slate-500 font-semibold mt-0.5">{tx.desc}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="text-right">
+                                                    <p className={`font-black text-sm ${tx.isCredit ? 'text-green-400' : 'text-orange-400'}`}>{tx.amount}</p>
+                                                    <p className="text-[10px] text-slate-600 font-semibold mt-0.5">{tx.date}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                        )}
+
                     </div>
                 </main>
             </div>

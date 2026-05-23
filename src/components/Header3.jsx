@@ -60,6 +60,16 @@ export default function Header3() {
                         >
                             Assign & Track
                         </button>
+                        <button 
+                            onClick={() => handleTabClick('tokens')} 
+                            className={`text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer ${
+                                activeTab === 'tokens' 
+                                    ? "text-orange-500 border-b-2 border-orange-500 pb-1" 
+                                    : "text-slate-300 hover:text-orange-500"
+                            }`}
+                        >
+                            Tokens
+                        </button>
                     </div>
 
                     {/* Action Button - Right: Premium Profile Pill */}
@@ -128,6 +138,16 @@ export default function Header3() {
                             }`}
                         >
                             Assign & Track
+                        </button>
+                        <button 
+                            onClick={() => handleTabClick('tokens')}
+                            className={`w-full text-left block px-3 py-2 rounded-xl text-base font-semibold transition-all ${
+                                activeTab === 'tokens' 
+                                    ? "bg-orange-500/10 text-orange-400" 
+                                    : "text-slate-300 hover:bg-slate-900 hover:text-orange-500"
+                            }`}
+                        >
+                            Tokens
                         </button>
 
                         {/* Mobile Profile Block */}
