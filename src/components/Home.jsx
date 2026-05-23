@@ -124,6 +124,67 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+            {/* About Section */}
+            <section id="about" className="py-24 bg-white border-t border-slate-100 scroll-mt-20">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
+                    <div className="text-center space-y-4 max-w-3xl mx-auto">
+                        <span className="text-orange-600 font-bold text-sm tracking-wider uppercase">About I-COCKROACH</span>
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+                            Engineering hyperlocal business execution
+                        </h2>
+                        <p className="text-lg text-slate-600 font-semibold">
+                            We are building the trust-verified digital pipeline connecting local micro-businesses with structured independent student executors.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                        {/* Mission Card */}
+                        <div className="p-8 rounded-2xl bg-slate-50/50 border border-slate-100 hover:border-orange-500/20 hover:bg-white hover:shadow-xl transition-all duration-300 space-y-4 text-left">
+                            <h3 className="text-2xl font-bold text-slate-900">Our Mission</h3>
+                            <p className="text-slate-600 leading-relaxed font-semibold text-sm">
+                                To reduce agency dependency and lower execution costs for micro-businesses, while creating structured, trust-verified earning opportunities for an accessible local digital workforce.
+                            </p>
+                            <ul className="space-y-3 pt-2 text-sm font-semibold text-slate-700">
+                                <li className="flex items-center gap-2">
+                                    <svg className="w-5 h-5 text-orange-500 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Lower execution costs by removing corporate middlemen.</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <svg className="w-5 h-5 text-orange-500 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Build accessible earning channels directly for student freelancers.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Vision Card */}
+                        <div className="p-8 rounded-2xl bg-slate-50/50 border border-slate-100 hover:border-orange-500/20 hover:bg-white hover:shadow-xl transition-all duration-300 space-y-4 text-left">
+                            <h3 className="text-2xl font-bold text-slate-900">Our Vision</h3>
+                            <p className="text-slate-600 leading-relaxed font-semibold text-sm">
+                                We envision a decentralized local market ecosystem where every micro-SME can instantly deploy physical and digital marketing, survey ops, or tech tasks, securing verified execution in minutes.
+                            </p>
+                            <ul className="space-y-3 pt-2 text-sm font-semibold text-slate-700">
+                                <li className="flex items-center gap-2">
+                                    <svg className="w-5 h-5 text-orange-500 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Establish a trust-verified global execution network.</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <svg className="w-5 h-5 text-orange-500 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Create verified, trustless proof-of-work ledger pipelines.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 }

@@ -10,7 +10,16 @@ export default function Header() {
             <nav className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
                 <div className="flex justify-between items-center">
                     {/* Brand Logo */}
-                    <Link to="/" className="flex items-center group">
+                    <Link 
+                        to="/" 
+                        onClick={(e) => {
+                            if (window.location.pathname === "/") {
+                                e.preventDefault();
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        }}
+                        className="flex items-center group"
+                    >
                         <img
                             src={logo}
                             className="h-10 w-auto mr-3 group-hover:scale-[1.03] transition-transform duration-300"
@@ -22,6 +31,12 @@ export default function Header() {
                     <div className="hidden md:flex items-center space-x-8">
                         <NavLink 
                             to="/" 
+                            onClick={(e) => {
+                                if (window.location.pathname === "/") {
+                                    e.preventDefault();
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }
+                            }}
                             className={({ isActive }) => 
                                 `text-sm font-semibold tracking-wide transition-all duration-200 hover:text-orange-600 ${
                                     isActive ? "text-orange-600 font-bold" : "text-slate-600"
@@ -30,38 +45,24 @@ export default function Header() {
                         >
                             Home
                         </NavLink>
-                        <NavLink 
-                            to="/common" 
-                            className={({ isActive }) => 
-                                `text-sm font-semibold tracking-wide transition-all duration-200 hover:text-orange-600 ${
-                                    isActive ? "text-orange-600 font-bold" : "text-slate-600"
-                                }`
-                            }
-                        >
-                            Find Services
-                        </NavLink>
                         <a 
-                            href="#features" 
+                            href="/#features" 
                             className="text-sm font-semibold tracking-wide text-slate-600 hover:text-orange-600 transition-all duration-200"
                         >
                             Features
                         </a>
                         <a 
-                            href="#stats" 
+                            href="/#stats" 
                             className="text-sm font-semibold tracking-wide text-slate-600 hover:text-orange-600 transition-all duration-200"
                         >
                             Impact
                         </a>
-                        <NavLink 
-                            to="/about" 
-                            className={({ isActive }) => 
-                                `text-sm font-semibold tracking-wide transition-all duration-200 hover:text-orange-600 ${
-                                    isActive ? "text-orange-600 font-bold" : "text-slate-600"
-                                }`
-                            }
+                        <a 
+                            href="/#about" 
+                            className="text-sm font-semibold tracking-wide text-slate-600 hover:text-orange-600 transition-all duration-200"
                         >
                             About Us
-                        </NavLink>
+                        </a>
                     </div>
 
                     {/* Action Buttons - Right */}
@@ -97,39 +98,38 @@ export default function Header() {
                     <div className="md:hidden mt-4 pt-4 border-t border-slate-100 space-y-3">
                         <NavLink 
                             to="/" 
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            onClick={(e) => {
+                                setIsMobileMenuOpen(false);
+                                if (window.location.pathname === "/") {
+                                    e.preventDefault();
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }
+                            }}
                             className="block px-3 py-2 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-orange-600"
                         >
                             Home
                         </NavLink>
-                        <NavLink 
-                            to="/common" 
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="block px-3 py-2 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-orange-600"
-                        >
-                            Find Services
-                        </NavLink>
                         <a 
-                            href="#features" 
+                            href="/#features" 
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="block px-3 py-2 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-orange-600"
                         >
                             Features
                         </a>
                         <a 
-                            href="#stats" 
+                            href="/#stats" 
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="block px-3 py-2 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-orange-600"
                         >
                             Impact
                         </a>
-                        <NavLink 
-                            to="/about" 
+                        <a 
+                            href="/#about" 
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="block px-3 py-2 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-orange-600"
                         >
                             About Us
-                        </NavLink>
+                        </a>
                         <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
                             <Link
                                 to="/"
