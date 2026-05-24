@@ -10,8 +10,8 @@ export default function Header() {
             <nav className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
                 <div className="flex justify-between items-center">
                     {/* Brand Logo */}
-                    <Link 
-                        to="/" 
+                    <Link
+                        to="/"
                         onClick={(e) => {
                             if (window.location.pathname === "/") {
                                 e.preventDefault();
@@ -29,7 +29,7 @@ export default function Header() {
 
                     {/* Navigation Links - Center */}
                     <div className="hidden md:flex items-center space-x-8">
-                        <NavLink 
+                        {/* <NavLink 
                             to="/" 
                             onClick={(e) => {
                                 if (window.location.pathname === "/") {
@@ -44,15 +44,15 @@ export default function Header() {
                             }
                         >
                             Home
-                        </NavLink>
-                        <a 
-                            href="/#features" 
+                        </NavLink> */}
+                        <a
+                            href="/#features"
                             className="text-sm font-semibold tracking-wide text-slate-600 hover:text-orange-600 transition-all duration-200"
                         >
                             Features
                         </a>
-                        <a 
-                            href="/#stats" 
+                        <a
+                            href="/#stats"
                             className="text-sm font-semibold tracking-wide text-slate-600 hover:text-orange-600 transition-all duration-200"
                         >
                             Impact
@@ -63,10 +63,10 @@ export default function Header() {
                     {/* Action Buttons - Right */}
                     <div className="hidden md:flex items-center space-x-6">
                         <Link
-                            to="/"
+                            to="/login"
                             className="inline-flex items-center justify-center px-5 py-2.5 font-bold text-sm text-white rounded-xl bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 shadow-md hover:shadow-orange-500/25 hover:scale-105 active:scale-95 transition-all duration-300"
                         >
-                            Getting Started 
+                            Getting Started
                         </Link>
                     </div>
 
@@ -91,8 +91,8 @@ export default function Header() {
                 {/* Mobile Menu Dropdown */}
                 {isMobileMenuOpen && (
                     <div className="md:hidden mt-4 pt-4 border-t border-slate-100 space-y-3">
-                        <NavLink 
-                            to="/" 
+                        <NavLink
+                            to="/"
                             onClick={(e) => {
                                 setIsMobileMenuOpen(false);
                                 if (window.location.pathname === "/") {
@@ -104,15 +104,15 @@ export default function Header() {
                         >
                             Home
                         </NavLink>
-                        <a 
-                            href="/#features" 
+                        <a
+                            href="/#features"
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="block px-3 py-2 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-orange-600"
                         >
                             Features
                         </a>
-                        <a 
-                            href="/#stats" 
+                        <a
+                            href="/#stats"
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="block px-3 py-2 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-orange-600"
                         >
@@ -121,7 +121,7 @@ export default function Header() {
 
                         <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
                             <Link
-                                to="/"
+                                to="/login"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="text-center px-4 py-2.5 font-bold text-white bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl shadow-md"
                             >
