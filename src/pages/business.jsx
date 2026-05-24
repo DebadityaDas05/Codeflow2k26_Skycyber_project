@@ -66,6 +66,15 @@ export default function Business() {
     const [isSignedOff, setIsSignedOff] = useState({});
     const [toastMessage, setToastMessage] = useState(null);
 
+    const [tokenBalance, setTokenBalance] = useState(1250);
+    const [transactions, setTransactions] = useState([
+        { type: 'Escrow Lock', desc: 'Video / Reels Editing campaign', amount: '-150 ATK', date: 'May 22, 2026', isCredit: false },
+        { type: 'Top Up', desc: 'UPI payment · Razorpay', amount: '+500 ATK', date: 'May 20, 2026', isCredit: true },
+        { type: 'Escrow Released', desc: 'Social Media Branding · Riya Sharma', amount: '-300 ATK', date: 'May 18, 2026', isCredit: false },
+        { type: 'Reward Bonus', desc: 'Referral — Arjun Mehta joined', amount: '+25 ATK', date: 'May 15, 2026', isCredit: true },
+        { type: 'Top Up', desc: 'UPI payment · Razorpay', amount: '+1,000 ATK', date: 'May 10, 2026', isCredit: true },
+    ]);
+
     // URL Search Params for Tab State
     const [searchParams, setSearchParams] = useSearchParams();
     const activeTab = searchParams.get('tab') || 'post-jobs';
@@ -178,6 +187,22 @@ export default function Business() {
         setTrackingMap(prev => {
             const active = prev[jobId];
             if (!active) return prev;
+
+            // Deduct tokens guarantee if transition to "In Progress" from "Pending"
+            if (nextStage === "In Progress" && active.stage === "Pending") {
+                setTokenBalance(balance => balance - 500);
+                setTransactions(txs => [
+                    { 
+                        type: 'Escrow Guarantee Lock', 
+                        desc: `Guarantee hold for ${active.studentName} execution`, 
+                        amount: '-500 ATK', 
+                        date: 'Today', 
+                        isCredit: false 
+                    },
+                    ...txs
+                ]);
+            }
+
             return {
                 ...prev,
                 [jobId]: {
@@ -207,6 +232,19 @@ export default function Business() {
             ...prev,
             [jobId]: true
         }));
+
+        // Restore token guarantee
+        setTokenBalance(balance => balance + 500);
+        setTransactions(txs => [
+            { 
+                type: 'Escrow Guarantee Release', 
+                desc: `Released guarantee hold for ${active.studentName} completion`, 
+                amount: '+500 ATK', 
+                date: 'Today', 
+                isCredit: true 
+            },
+            ...txs
+        ]);
 
         showToast(`Digital sign-off completed! Escrow funds of $${active.cost} released securely to ${active.studentName}.`);
     };
@@ -796,7 +834,7 @@ export default function Business() {
                                                 Aethon Token Wallet
                                             </span>
                                             <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
-                                                1,250 <span className="text-orange-500">ATK</span>
+                                                {tokenBalance.toLocaleString()} <span className="text-orange-500">ATK</span>
                                             </h2>
                                             <p className="text-slate-400 font-semibold text-sm">≈ $62.50 USD · Last topped up 3 days ago</p>
                                         </div>
@@ -815,7 +853,7 @@ export default function Business() {
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
                                     {[
                                         { label: 'Total Spent', value: '3,800 ATK', sub: 'All campaigns' },
-                                        { label: 'Locked in Escrow', value: '450 ATK', sub: '2 active jobs' },
+                                        { label: 'Locked in Escrow', value: `${Object.values(trackingMap).filter(t => t && t.stage !== "Pending" && t.stage !== "Paid").length * 500} ATK`, sub: `${Object.values(trackingMap).filter(t => t && t.stage !== "Pending" && t.stage !== "Paid").length} active jobs` },
                                         { label: 'Refunded', value: '200 ATK', sub: 'Past 30 days' },
                                         { label: 'Earned Rewards', value: '75 ATK', sub: 'Referral bonus' },
                                     ].map(({ label, value, sub }) => (
@@ -834,13 +872,7 @@ export default function Business() {
                                         <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Last 5 transactions</span>
                                     </div>
                                     <div className="space-y-3">
-                                        {[
-                                            { type: 'Escrow Lock', desc: 'Video / Reels Editing campaign', amount: '-150 ATK', date: 'May 22, 2026', isCredit: false },
-                                            { type: 'Top Up', desc: 'UPI payment · Razorpay', amount: '+500 ATK', date: 'May 20, 2026', isCredit: true },
-                                            { type: 'Escrow Released', desc: 'Social Media Branding · Riya Sharma', amount: '-300 ATK', date: 'May 18, 2026', isCredit: false },
-                                            { type: 'Reward Bonus', desc: 'Referral — Arjun Mehta joined', amount: '+25 ATK', date: 'May 15, 2026', isCredit: true },
-                                            { type: 'Top Up', desc: 'UPI payment · Razorpay', amount: '+1,000 ATK', date: 'May 10, 2026', isCredit: true },
-                                        ].map((tx, i) => (
+                                        {transactions.map((tx, i) => (
                                             <div key={i} className="flex items-center justify-between p-5 rounded-2xl bg-slate-900/40 border border-slate-800/50 hover:border-slate-700/60 transition-all duration-200">
                                                 <div className="flex items-center gap-4">
                                                     <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-sm font-black ${tx.isCredit ? 'bg-green-500/10 text-green-400' : 'bg-orange-500/10 text-orange-400'}`}>
