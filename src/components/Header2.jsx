@@ -46,8 +46,8 @@ export default function Header2() {
 
                     {/* Action Buttons - Right */}
                     <div className="hidden md:flex items-center space-x-6">
-                        <button
-                            onClick={() => alert("Student Profile Dashboard: Performance, Bids, Wallet & Settings.")}
+                        <Link
+                            to="/dashboard"
                             className="inline-flex items-center gap-3 px-4 py-2 text-sm font-bold text-slate-700 rounded-full bg-slate-50 border border-slate-200/80 hover:border-orange-500/40 hover:bg-orange-50/20 shadow-sm hover:scale-[1.02] active:scale-95 transition-all duration-300 cursor-pointer"
                         >
                             <div className="w-7 h-7 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-black text-xs flex items-center justify-center shadow-inner">
@@ -57,7 +57,7 @@ export default function Header2() {
                             <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                             </svg>
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Button - Right */}
@@ -110,8 +110,9 @@ export default function Header2() {
 
 
                         <div className="pt-4 border-t border-slate-100">
-                            <button
-                                onClick={() => alert("Student Profile Dashboard: Performance, Bids, Wallet & Settings.")}
+                            <Link
+                                to="/dashboard"
+                                onClick={() => setIsMobileMenuOpen(false)}
                                 className="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-orange-500/30 transition-all duration-200 cursor-pointer text-left"
                             >
                                 <div className="flex items-center gap-3">
@@ -126,7 +127,7 @@ export default function Header2() {
                                 <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                                 </svg>
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 )}

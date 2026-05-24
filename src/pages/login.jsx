@@ -61,6 +61,8 @@ export default function LoginPopup({
 
             setShowLogin(false);
 
+            localStorage.setItem("userRole", role);
+
             // Redirect based on selected role
             if (role === "student" || role === "individual") {
                 navigate("/common");

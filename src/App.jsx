@@ -5,6 +5,7 @@ import LoginPopup from './pages/login.jsx'
 import Common from './pages/common.jsx'
 import Business from './pages/business.jsx'
 import Services from './pages/services.jsx'
+import Dashboard from './pages/dashboard.jsx'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/common" element={<Common />} />
       <Route path="/business" element={<Business />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   )
 }
